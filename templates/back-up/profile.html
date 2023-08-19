@@ -1,0 +1,540 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="{% static 'dash/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'dash/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'dash/css/select2.min.css' %}">
+	<link rel="stylesheet" href="{% static 'dash/css/paymentfont.min.css' %}">
+	<link rel="stylesheet" href="{% static 'dash/css/slider-radio.css' %}">
+	<link rel="stylesheet" href="{% static 'dash/css/plyr.css' %}">
+	<link rel="stylesheet" href="{% static 'dash/css/main.css' %}">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="{% static 'dash/icon/favicon-32x32.png' %}" sizes="32x32">
+	<link rel="apple-touch-icon" href="{% static 'dash/icon/favicon-32x32.png' %}">
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Dmitry Volkov">
+	<title>داشبورد شخصی {{request.user.username}} - خانه مهر</title>
+
+</head>
+<body>
+	<!-- header -->
+	<header class="header">
+		<div class="header__content">
+
+				<div class="header__action header__action--cart">
+					<span></span>
+				</div>
+
+				<div class="header__action header__action--signin">
+					<a class="header__action-btn" href="/logout">
+						<span>خروج</span>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.81,12.28a3.73,3.73,0,0,0,1-2.5,3.78,3.78,0,0,0-7.56,0,3.73,3.73,0,0,0,1,2.5A5.94,5.94,0,0,0,6,16.89a1,1,0,0,0,2,.22,4,4,0,0,1,7.94,0A1,1,0,0,0,17,18h.11a1,1,0,0,0,.88-1.1A5.94,5.94,0,0,0,14.81,12.28ZM12,11.56a1.78,1.78,0,1,1,1.78-1.78A1.78,1.78,0,0,1,12,11.56ZM19,2H5A3,3,0,0,0,2,5V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V5A3,3,0,0,0,19,2Zm1,17a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1Z"/></svg>
+					</a>
+				</div>
+			</div>
+
+			<button class="header__btn" type="button">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+	</header>
+	<!-- end header -->
+
+	<!-- sidebar -->
+	<div class="sidebar">
+		<!-- sidebar logo -->
+		<div class="sidebar__logo">
+			<img src="img/logo.svg" alt="">
+		</div>
+		<!-- end sidebar logo -->
+
+		<!-- sidebar nav -->
+		<ul class="sidebar__nav">
+			<li class="sidebar__nav-item">
+				<a href="/" class="sidebar__nav-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,8h0L14,2.74a3,3,0,0,0-4,0L4,8a3,3,0,0,0-1,2.26V19a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V10.25A3,3,0,0,0,20,8ZM14,20H10V15a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1Zm5-1a1,1,0,0,1-1,1H16V15a3,3,0,0,0-3-3H11a3,3,0,0,0-3,3v5H6a1,1,0,0,1-1-1V10.25a1,1,0,0,1,.34-.75l6-5.25a1,1,0,0,1,1.32,0l6,5.25a1,1,0,0,1,.34.75Z"></path></svg> <span>صفحه اصلی</span></a>
+			</li>
+		</ul>
+		<!-- end sidebar nav -->
+	</div>
+	<!-- end sidebar -->
+	<div class="player">
+		<div class="player__cover">
+			<img src="{{random_ahang.picture.url}}" alt="">
+		</div>
+
+		<div class="player__content">
+			<span class="player__track"><b class="player__title">{{random_ahang.name}}</b>  <span class="player__artist">{{random_ahang.Track_from.name}}</span></span>
+			<audio src="{{random_ahang.track_audio.url}}" id="audio" controls></audio>
+		</div>
+	</div>
+
+	<button class="player__btn" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.65,2.24a1,1,0,0,0-.8-.23l-13,2A1,1,0,0,0,7,5V15.35A3.45,3.45,0,0,0,5.5,15,3.5,3.5,0,1,0,9,18.5V10.86L20,9.17v4.18A3.45,3.45,0,0,0,18.5,13,3.5,3.5,0,1,0,22,16.5V3A1,1,0,0,0,21.65,2.24ZM5.5,20A1.5,1.5,0,1,1,7,18.5,1.5,1.5,0,0,1,5.5,20Zm13-2A1.5,1.5,0,1,1,20,16.5,1.5,1.5,0,0,1,18.5,18ZM20,7.14,9,8.83v-3L20,4.17Z"/></svg>موزیک پلیر</button>
+	<!-- main content -->
+	<main class="main">
+		<div class="container-fluid">
+			<div class="row row--grid">
+				<!-- breadcrumb -->
+				<div class="col-12">
+					<ul class="breadcrumb">
+						<li class="breadcrumb__item"><a href="/">صفحه اصلی</a></li>
+						<li class="breadcrumb__item breadcrumb__item--active">پروفایل</li>
+					</ul>
+				</div>
+				<!-- end breadcrumb -->
+
+				<!-- title -->
+				<div class="col-12">
+					<div class="main__title main__title--page">
+						<h1>پروفایل {{infs.stu_name}} {{infs.stu_lastname}}</h1>
+					</div>
+				</div>
+				<!-- end title -->
+			</div>
+
+			<div dir="rtl" class="row row--grid">
+				<div class="col-12">
+					<div class="profile">
+						<div class="profile__user">
+							<div class="profile__avatar">
+								<img src="img/avatar.svg" alt="">
+							</div>
+							<div class="profile__meta">
+								<h3> نام : {{request.user.username}}</h3>
+								<span>کد بورسیه : {% if infs.stu_unicode %} {{infs.stu_unicode}} {% else %} ندارد {% endif %}</span>
+							</div>
+						</div>
+
+						<!-- tabs nav -->
+						<ul class="nav nav-tabs profile__tabs" id="profile__tabs" role="tablist">
+							{% if infs %}
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#tab-4" role="tab" aria-controls="tab-4" aria-selected="false">اطلاعات شخصی</a>
+							</li>
+							{% else %}
+							<li class="nav-item">
+								<a class="nav-link" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false">ثبت اطلاعات و تکمیل پرونده</a>
+							</li>
+							{% endif %}
+						</ul>
+						<!-- end tabs nav -->
+					</div>
+					{% if infs %}
+					<!-- content tabs -->
+					<div class="tab-content">
+						<div class="tab-pane fade" id="tab-4" role="tabpanel">
+							<div class="row row--grid">
+								<!-- details form -->
+								<div class="col-12 col-lg-6">
+									<form action="/blog/get-access-error" class="sign__form sign__form--profile" method='POST'>
+										{% csrf_token %}
+										<div class="row">
+											<div class="col-12">
+												<h4 class="sign__title">اطلاعات پرونده {{infs.stu_name}} {{infs.stu_lastname}}</h4>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="username">نام دانش اموز</label>
+													<input id="username" type="text" value='{{infs.stu_name}}' name="username" class="sign__input">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="email">فامیل دانش اموز</label>
+													<input id="email" type="text" value='{{infs.stu_lastname}}' name="email" class="sign__input">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="firstname">نام پدر دانش اموز</label>
+													<input id="firstname" type="text" value='{{infs.stu_fathername}}' name="firstname" class="sign__input" placeholder="ابوالفضل">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تاریخ تولد دانش اموز</label>
+													<input id="lastname" type="text" value='{{infs.stu_birthdate}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">کد ملی دانش اموز</label>
+													<input id="lastname" type="text" value='{{infs.stu_nationalcode}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">شماره شناسنامه دانش اموز</label>
+													<input id="lastname" type="text" value='{{infs.stu_intshenas}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">محل صدور شناسنامه دانش اموز</label>
+													<input id="lastname" type="text" value='{{infs.stu_placerhi}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">شماره سریال شناسنامه دانش اموز</label>
+													<input id="lastname" type="text" value='{{infs.stu_placerig}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">وضعیتی جسمی دانش اموز</label>
+													{% if infs.stu_status == 'H' %}
+													<input id="lastname" type="text" value='سالم' name="lastname" class="sign__input" placeholder="قاسمی">
+													{% else %}
+													<input id="lastname" type="text" value='دارای معلولیت' name="lastname" class="sign__input" placeholder="قاسمی">
+													{% endif %}
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">محل تحصیل</label>
+													<input id="lastname" type="text" value='{{infs.stu_dirschool}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">نام و نام خانوادگی سرپرست</label>
+													<input id="lastname" type="text" value='{{infs.par_fullname}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تحصیلات سرپرست</label>
+													<input id="lastname" type="text" value='{{infs.par_courselevel}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تاریخ تولد سرپرست</label>
+													<input id="lastname" type="text" value='{{infs.par_birthdate}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">شغل سرپرست</label>
+													<input id="lastname" type="text" value='{{infs.par_job}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">نشانی محل کار</label>
+													<input id="lastname" type="text" value='{{infs.par_jobloc}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">شماره تلفن محل کار</label>
+													<input id="lastname" type="text" value='{{infs.par_jobnum}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">ادرس منزل</label>
+													<input id="lastname" type="text" value='{{infs.fam_loc}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تلفن ثابت</label>
+													<input id="lastname" type="text" value='{{infs.fam_staticnum}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تلفن همراه</label>
+													<input id="lastname" type="text" value='{{infs.fam_dynamicnum}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">وضعیت مسکن خانواده</label>
+													{% if infs.fam_locstatus == 'R' %}
+													<input id="lastname" type="text" value='اجاره' name="lastname" class="sign__input" placeholder="قاسمی">
+													{% elif infs.fam_locstatus == 'P' %}
+													<input id="lastname" type="text" value='شخصی' name="lastname" class="sign__input" placeholder="قاسمی">
+													{% else %}
+													<input id="lastname" type="text" value='سایر' name="lastname" class="sign__input" placeholder="قاسمی">
+													{% endif %}
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">کد بورسیه</label>
+													<input id="lastname" type="text" value='{{infs.stu_unicode}}' name="lastname" class="sign__input" placeholder="قاسمی">
+												</div>
+											</div>
+
+											<div class="col-12">
+												<button class="sign__btn" type="submit">گزارش اشتباه!</button>
+											</div>
+										</div>
+									</form>
+								</div>
+								<!-- end details form -->
+							</div>
+						</div>
+					</div>
+					{% else %}
+					<!-- end content tabs -->
+					<div class="tab-content">
+						<div class="tab-pane fade" id="tab-3" role="tabpanel">
+							<div class="row row--grid">
+								<!-- details form -->
+								<div class="col-12 col-lg-6">
+									<form action="/blog/get-access-error" class="sign__form sign__form--profile" method='POST'>
+										{% csrf_token %}
+										<div class="row">
+											<div class="col-12">
+												<h4 class="sign__title">اطلاعات پرونده</h4>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="username">نام دانش اموز</label>
+													<input id="username" type="text" name="username" class="sign__input">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="email">فامیل دانش اموز</label>
+													<input id="email" type="text" value='' name="email" class="sign__input">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="firstname">نام پدر دانش اموز</label>
+													<input id="firstname" type="text" value='' name="firstname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تاریخ تولد دانش اموز</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">کد ملی دانش اموز</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">شماره شناسنامه دانش اموز</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">محل صدور شناسنامه دانش اموز</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">شماره سریال شناسنامه دانش اموز</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">وضعیتی جسمی دانش اموز</label>
+													{% if infs.stu_status == 'H' %}
+													<input id="lastname" type="text" value='سالم' name="lastname" class="sign__input" placeholder="">
+													{% else %}
+													<input id="lastname" type="text" value='دارای معلولیت' name="lastname" class="sign__input" placeholder="">
+													{% endif %}
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">محل تحصیل</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">نام و نام خانوادگی سرپرست</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تحصیلات سرپرست</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تاریخ تولد سرپرست</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">شغل سرپرست</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">نشانی محل کار</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">شماره تلفن محل کار</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">ادرس منزل</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تلفن ثابت</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">تلفن همراه</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">وضعیت مسکن خانواده</label>
+													{% if infs.fam_locstatus == 'R' %}
+													<input id="lastname" type="text" value='اجاره' name="lastname" class="sign__input" placeholder="">
+													{% elif infs.fam_locstatus == 'P' %}
+													<input id="lastname" type="text" value='شخصی' name="lastname" class="sign__input" placeholder="">
+													{% else %}
+													<input id="lastname" type="text" value='سایر' name="lastname" class="sign__input" placeholder="">
+													{% endif %}
+												</div>
+											</div>
+
+											<div class="col-12 col-md-6 col-lg-12 col-xl-6">
+												<div class="sign__group">
+													<label class="sign__label" for="lastname">کد بورسیه</label>
+													<input id="lastname" type="text" value='' name="lastname" class="sign__input" placeholder="">
+												</div>
+											</div>
+
+											<div class="col-12">
+												<button class="sign__btn" type="submit">ثبت اطلاعات</button>
+											</div>
+										</div>
+									</form>
+								</div>
+								<!-- end details form -->
+							</div>
+						</div>
+					</div>
+					{% endif %}
+				</div>
+			</div>	
+		</div>
+	</main>
+	<!-- end main content -->
+
+	<!-- footer -->
+	<footer class="footer">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-4 order-4 order-md-1 order-lg-4 order-xl-1">
+					<div class="footer__logo">
+						<img src="img/logo.svg" alt="">
+					</div> 
+					<p class="footer__tagline">انجمن خانه مهر به عنوان نهادی غیردولتی و غیرانتفاعی، با هدف حمایت از کودکان در معرض آسیب و به ویژه کودکان مستعد آغاز نموده است و به صورت رایگان، خدمات آموزشی و حمایتی خود را ارائه می‏ دهد.</p>
+					<div class="footer__links">
+						<a href="mailto:vizm399@gmail.com"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.29,8.71a1,1,0,0,0,1.42,0l4-4a1,1,0,1,0-1.42-1.42L17,6.59l-1.29-1.3a1,1,0,0,0-1.42,1.42ZM21,8a1,1,0,0,0-1,1v9a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V8.41L9.88,14.3a3,3,0,0,0,2.11.87,3.08,3.08,0,0,0,2.16-.9l1.72-1.72a1,1,0,1,0-1.42-1.42L12.7,12.88a1,1,0,0,1-1.4,0L5.41,7H11a1,1,0,0,0,0-2H5A3,3,0,0,0,2,8V18a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V9A1,1,0,0,0,21,8Z"/></svg> khanemehr@work.me</a>
+						<a href="tel:+989993334567"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.44,13c-.22,0-.45-.07-.67-.12a9.44,9.44,0,0,1-1.31-.39,2,2,0,0,0-2.48,1l-.22.45a12.18,12.18,0,0,1-2.66-2,12.18,12.18,0,0,1-2-2.66L10.52,9a2,2,0,0,0,1-2.48,10.33,10.33,0,0,1-.39-1.31c-.05-.22-.09-.45-.12-.68a3,3,0,0,0-3-2.49h-3a3,3,0,0,0-3,3.41A19,19,0,0,0,18.53,21.91l.38,0a3,3,0,0,0,2-.76,3,3,0,0,0,1-2.25v-3A3,3,0,0,0,19.44,13Zm.5,6a1,1,0,0,1-.34.75,1.05,1.05,0,0,1-.82.25A17,17,0,0,1,4.07,5.22a1.09,1.09,0,0,1,.25-.82,1,1,0,0,1,.75-.34h3a1,1,0,0,1,1,.79q.06.41.15.81a11.12,11.12,0,0,0,.46,1.55l-1.4.65a1,1,0,0,0-.49,1.33,14.49,14.49,0,0,0,7,7,1,1,0,0,0,.76,0,1,1,0,0,0,.57-.52l.62-1.4a13.69,13.69,0,0,0,1.58.46q.4.09.81.15a1,1,0,0,1,.79,1Z"/></svg> +98 915 899 34 20</a>
+					</div>	
+				</div>
+
+			<div class="row">
+				<div class="col-12">
+					<div class="footer__content">
+						<div class="footer__social">
+							<a href="#" target="_blank"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15Z" fill="black"/><mask x="0" y="0" width="30" height="30"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15Z" fill="white"/></mask><path fill-rule="evenodd" clip-rule="evenodd" d="M15.0007 7C12.8281 7 12.5554 7.0095 11.702 7.04833C10.8504 7.08733 10.269 7.22217 9.76036 7.42C9.23419 7.62434 8.78785 7.89768 8.34318 8.34251C7.89818 8.78719 7.62484 9.23352 7.41984 9.75953C7.2215 10.2684 7.0865 10.8499 7.04817 11.7012C7.01 12.5546 7 12.8274 7 15.0001C7 17.1728 7.00967 17.4446 7.04833 18.298C7.0875 19.1496 7.22234 19.731 7.42 20.2396C7.62451 20.7658 7.89784 21.2121 8.34268 21.6568C8.78719 22.1018 9.23352 22.3758 9.75936 22.5802C10.2684 22.778 10.8499 22.9128 11.7014 22.9518C12.5547 22.9907 12.8272 23.0002 14.9997 23.0002C17.1726 23.0002 17.4444 22.9907 18.2978 22.9518C19.1495 22.9128 19.7315 22.778 20.2405 22.5802C20.7665 22.3758 21.2121 22.1018 21.6567 21.6568C22.1017 21.2121 22.375 20.7658 22.58 20.2398C22.7767 19.731 22.9117 19.1495 22.9517 18.2981C22.99 17.4448 23 17.1728 23 15.0001C23 12.8274 22.99 12.5547 22.9517 11.7014C22.9117 10.8497 22.7767 10.2684 22.58 9.7597C22.375 9.23352 22.1017 8.78719 21.6567 8.34251C21.2116 7.89751 20.7666 7.62417 20.24 7.42C19.73 7.22217 19.1483 7.08733 18.2966 7.04833C17.4433 7.0095 17.1716 7 14.9983 7H15.0007ZM14.2831 8.4417C14.4225 8.44148 14.5724 8.44155 14.7341 8.44162L15.0008 8.4417C17.1368 8.4417 17.39 8.44936 18.2335 8.4877C19.0135 8.52337 19.4368 8.6537 19.7188 8.7632C20.0922 8.9082 20.3583 9.08154 20.6382 9.36154C20.9182 9.64154 21.0915 9.90821 21.2368 10.2815C21.3463 10.5632 21.4769 10.9866 21.5124 11.7666C21.5507 12.6099 21.559 12.8632 21.559 14.9983C21.559 17.1333 21.5507 17.3866 21.5124 18.23C21.4767 19.01 21.3463 19.4333 21.2368 19.715C21.0918 20.0883 20.9182 20.3542 20.6382 20.634C20.3582 20.914 20.0923 21.0873 19.7188 21.2323C19.4372 21.3423 19.0135 21.4723 18.2335 21.508C17.3901 21.5463 17.1368 21.5547 15.0008 21.5547C12.8646 21.5547 12.6114 21.5463 11.7681 21.508C10.9881 21.472 10.5647 21.3417 10.2826 21.2322C9.90923 21.0872 9.64256 20.9138 9.36256 20.6338C9.08256 20.3538 8.90922 20.0878 8.76389 19.7143C8.65438 19.4326 8.52388 19.0093 8.48838 18.2293C8.45005 17.386 8.44238 17.1326 8.44238 14.9963C8.44238 12.8599 8.45005 12.6079 8.48838 11.7646C8.52405 10.9846 8.65438 10.5612 8.76389 10.2792C8.90889 9.90588 9.08256 9.63921 9.36256 9.35921C9.64256 9.0792 9.90923 8.90587 10.2826 8.76053C10.5646 8.65053 10.9881 8.52053 11.7681 8.4847C12.5061 8.45136 12.7921 8.44136 14.2831 8.4397V8.4417ZM18.3112 10.7295C18.3112 10.1994 18.7412 9.76987 19.2712 9.76987V9.76953C19.8012 9.76953 20.2312 10.1995 20.2312 10.7295C20.2312 11.2595 19.8012 11.6896 19.2712 11.6896C18.7412 11.6896 18.3112 11.2595 18.3112 10.7295ZM15.0008 10.8916C12.7321 10.8917 10.8926 12.7312 10.8926 15C10.8926 17.2688 12.7322 19.1075 15.001 19.1075C17.2699 19.1075 19.1087 17.2688 19.1087 15C19.1087 12.7311 17.2697 10.8916 15.0008 10.8916ZM17.6677 14.9999C17.6677 13.5271 16.4737 12.3333 15.001 12.3333C13.5281 12.3333 12.3343 13.5271 12.3343 14.9999C12.3343 16.4726 13.5281 17.6666 15.001 17.6666C16.4737 17.6666 17.6677 16.4726 17.6677 14.9999Z" fill="white"/></svg></a>
+						</div>
+						<small class="footer__copyright">© تمامی حقوق محفوظ است <a href="https://www.rtl-theme.com/author/tirtashirika/" target="_blank">خانه مهر - ویزیتور</a>.</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->
+	<!-- modal info -->
+	<!-- JS -->
+	
+	<script src="{% static 'dash/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'dash/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'dash/js/smooth-scrollbar.js' %}"></script>
+	<script src="{% static 'dash/js/select2.min.js' %}"></script>
+	<script src="{% static 'dash/js/slider-radio.js' %}"></script>
+	<script src="{% static 'dash/js/jquery.inputmask.min.js' %}"></script>
+	<script src="{% static 'dash/js/plyr.min.js' %}"></script>
+	<script src="{% static 'dash/js/main.js' %}"></script>
+</body>
+
+</html>

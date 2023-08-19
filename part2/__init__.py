@@ -1,0 +1,1 @@
+default_app_config = 'part2.apps.Part2Config'

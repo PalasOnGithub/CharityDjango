@@ -1,0 +1,155 @@
+{% extends 'index.html' %}
+{% block title %} 
+Khane Mehr - خانه مهر
+{% endblock title %}
+{% block content %}
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <div class="breadcrumb_iner_item text-center">
+                            <h2>{{her.name}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+    <!--================Blog Area =================-->
+    <section class="blog_area single-post-area section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post">
+                        <div class="feature-img">
+                            <img class="img-fluid" src="{{her.picture.url}}" alt="">
+                        </div>
+                        <div class="blog_details">
+                            <h2></h2>
+                            <ul class="blog-info-link mt-3 mb-4">
+                                <li><a href="#"><i class="fa fa-user"></i>دسته بندی : {{her.iox_cet.name}}</a></li>
+                            </ul>
+                            <p class="excert">{{her.desc_first}}</p>
+                            <div class="quote-wrapper">
+                                <div class="quotes">{{her.location_Event}}</div>
+                            </div>
+                            <p>
+                            {{her.end_desc}}</p>
+                        </div>
+                    </div>
+                    <div class="navigation-top">
+                        <div class="navigation-area">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-start align-items-center">
+                                    <div class="thumb">
+                                        <a href="{{pasther.get_exact_url}}">
+                                            <img class="img-fluid" src="{{pasther.picture.url}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="arrow">
+                                        <a href="{{pasther.get_exact_url}}">
+                                            <span class="lnr text-white ti-arrow-right"></span>
+                                        </a>
+                                    </div>
+                                    <div class="detials">
+                                        <p>پست قبل</p>
+                                        <a href="{{pasther.get_exact_url}}">
+                                            <h4>{{pasther.name}}</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-end align-items-center">
+                                    <div class="detials">
+                                        <p>پست جدید</p>
+                                        <a href="{{nexher.get_exact_url}}">
+                                            <h4>{{nexher.name}}</h4>
+                                        </a>
+                                    </div>
+                                    <div class="arrow">
+                                        <a href="{{nexher.get_exact_url}}">
+                                            <span class="lnr text-white ti-arrow-left"></span>
+                                        </a>
+                                    </div>
+                                    <div class="thumb">
+                                        <a href="{{nexher.get_exact_url}}">
+                                            <img class="img-fluid" src="{{nexher.picture.url}}" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-author">
+                        <div class="media align-items-center">
+                            <img src="{{admin_pic.picture.url}}" alt="">
+                            <div class="media-body">
+                                <a href="#">
+                                    <h4>V1Z1T0R-</h4>
+                                </a>
+                                <p>مرسی ک وقتتون رو برای ما صرف کردید!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_left_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder='جستجو' onfocus="this.placeholder = ''" onblur="this.placeholder = 'جستجو'">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1" type="submit">جستجو</button>
+                            </form>
+                        </aside>
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">دسته بندی ها</h4>
+                            <ul class="list cat-list">
+                                {% for category in scat %}
+                                <li>
+                                    <a href="#" class="d-flex">
+                                        <p>- {{category.name}}</p>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </aside>
+
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">آخرین پست ها</h3>
+                            {% for blog in newest_b %}
+                            <div class="media post_item">
+                                <img src="{{blog.picture.url}}" alt="post">
+                                <div class="media-body">
+                                    <a href="single-blog.html">
+                                        <h3>{{blog.name}}</h3>
+                                    </a>
+                                    <p>{{blog.create_at|safe}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </aside>
+                        <aside class="single_sidebar_widget instagram_feeds">
+                            <h4 class="widget_title">پست های ما در اینستاگرام</h4>
+                            <ul class="instagram_row flex-wrap">
+                                <li>
+                                    <a href="#">
+                                        <img class="img-fluid" src="{{admin_pic.picture.url}}" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

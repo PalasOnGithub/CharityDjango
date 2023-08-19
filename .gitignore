@@ -1,0 +1,13 @@
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+PersianAdminLTE/
+*.pyc
+
+part1/migrations/
+part2/migrations/
+

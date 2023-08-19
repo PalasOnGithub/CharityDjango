@@ -1,0 +1,52 @@
+{% extends 'index_music.html' %}
+{% block title%} ثبت نام انجام شد{% endblock title%}
+{% block content%}
+	<!-- main content -->
+	<main class="main">
+		<div class="container-fluid">
+			<div class="row row--grid">
+				<!-- breadcrumb -->
+				<div class="col-12">
+					<ul class="breadcrumb">
+						<li class="breadcrumb__item"><a href="/">صفحه اصلی</a></li>
+					</ul>
+				</div>
+				<!-- end breadcrumb -->
+                {% if access %}
+                				<!-- error -->
+				<div class="col-12">
+					<div class="page-404">
+						<div class="page-404__wrap">
+							<div class="page-404__content">
+								<p class="page-404__text">با تشکر از شما , اطلاعات شما بار دیگر توسط اعضای خانه مهر بازنگری میشود</p>
+                                <p class="page-404__text"> تا 30 ثانیه دیگر به پنل کاربری هدایت میشوید</p>
+                                <p class="page-404__text"> &#128153; خانه مهر , خانه مهربانی</p>
+							</div>
+						</div>
+					</div>
+				</div>
+            {% else %}
+				<!-- error -->
+				<div class="col-12">
+					<div class="page-404">
+						<div class="page-404__wrap">
+							<div class="page-404__content">
+								<p class="page-404__text">با تشکر از شما , پرونده شما توسط اعضای خانه مهر مطالعه و نتیجه از طریق شماره همراه شما اعلام میشود</p>
+                                <p class="page-404__text"> تا 30 ثانیه دیگر به داشبورد شخصی هدایت میشود و میتوانید اطلاعات و وضعیت پرونده را بازنگری کنید</p>
+                                <p class="page-404__text"> &#128153; خانه مهر , خانه مهربانی</p>
+							</div>
+						</div>
+					</div>
+				</div>
+                {% endif %}
+                <script>
+                    setTimeout(function(){
+                         window.location.href = '/dashboard-user';
+                      }, 30000);
+                </script>
+				<!-- end error -->
+			</div>
+		</div>
+	</main>
+	<!-- end main content -->
+{% endblock content%}

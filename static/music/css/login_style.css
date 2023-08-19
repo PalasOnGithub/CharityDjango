@@ -1,0 +1,27 @@
+#div_id_password , #div_id_login , #div_id_username ,#div_id_email , #div_id_password1 ,#div_id_password2
+{
+  text-align: right !important;
+  color: white !important;
+  width: 100% !important;
+}
+input[name="password"] , input[name="login"]
+{
+  color: black !important;
+}
+.sign__social a.gl {
+  width: 100% !important;
+}
+#container
+{
+  background-image: url("img.jpg");
+  background-repeat:no-repeat ;
+  background-size: cover;
+  background-attachment: fixed;
+  padding-bottom: 50px !important;
+}
+#container_shadow
+{
+  height: 100% !important;
+  width: 100% !important;
+  background-color: rgba(0,0,0,0.5);
+}

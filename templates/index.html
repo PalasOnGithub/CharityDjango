@@ -1,0 +1,379 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> {% block title %} خانه مهر {% endblock title %}</title>
+    <link rel="icon" href="{% static 'main/pics/favicon.png' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/animate.css' %}">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/owl.carousel.min.css' %}">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/themify-icons.css' %}">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css' %}">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/flaticon.css' %}">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/magnific-popup.css' %}">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/nice-select.css' %}">
+
+    <!-- style CSS -->
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+    <!--::header part start::-->
+    <header class="main_menu home_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="ti-menu"></span>
+                        </button>
+                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
+                             id="navbarSupportedContent">
+                            <ul class="navbar-nav align-items-center">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">صفحه نخست</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/dashboard-user/">داشبورد اطلاعات</a>
+                                </li>
+                                <li class="nav-item">
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="/blog/" id="navbarDropdown_1"
+                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">بلاگ
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
+                                        <a class="dropdown-item" href="/blog/">اخبار و اطلاع رسانی</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact-us">تماس با ما</a>
+                                </li>
+                                {% if not user.is_authenticated %}
+                                <li class="d-none d-lg-block">
+                                    <a class="btn_2" href="/register/">ثبت نام</a>
+                                </li>
+                                <li class="d-none d-lg-block">
+                                    <a class="btn_2" href="/login/">ورود</a>
+                                </li>
+                                {% elif user.is_authenticated %}
+                                <li class="d-none d-lg-block">
+                                    <a class="btn_2" href="/logout/">خروج</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header part end--> 
+{% block content %}
+    <!-- banner part start-->
+    <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-7">
+                    <div class="banner_text text-center">
+                        <div class="banner_text_iner">
+                            <h1>خانه مهر<br></h1>
+                            <p>حامی دانش اموزان مستعد و محلی برای رشد</p>
+                            <a href="/dashboard-user" class="btn_2">ثبت نام و درخواست تشکیل پرونده</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner part start-->
+
+    <!-- service part start-->
+    <section class="service_part">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-4 col-sm-10">
+                    <div class="service_text">
+                        <h2>افتخار ماست که به دانش اموزان مستعد , خدمت میکنیم</h2>
+                        <p>انجمن خانه مهر به عنوان نهادی غیردولتی و غیرانتفاعی، با هدف حمایت از کودکان در معرض آسیب و به ویژه کودکان مستعد آغاز نموده است و به صورت رایگان، خدمات آموزشی و حمایتی خود را ارائه می‏ دهد.</p>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-xl-6">
+                    <div class="service_part_iner">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_service_text ">
+                                    <i class="flaticon-money"></i>
+                                    <h4>کمک مالی</h4>
+                                    <p>گروهی از حامیان با پرداخت هزینه های تدریس دانش اموزان , از انها حمایت میکنند</p>
+                                    <a href="#">هم اکنون حامی شوید</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_service_text">
+                                    <i class="flaticon-money"></i>
+                                    <h4>تعداد دانش اموزان</h4>
+                                    <p>موسسه خانه مهر , باعث افتخار خود میداند که تا بحال به 78 دانش اموز خدمت رسانی کرده است</p>
+                                    <a href="#">تماس با ما</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_service_text">
+                                    <i class="flaticon-money"></i>
+                                    <h4>مدد جو شوید</h4>
+                                    <p>خانواده خانه مهر با اضافه شدن شما , بزرگ و زیبا تر میشود</p>
+                                    <a href="#">بیشتر بدانید</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_service_text">
+                                    <i class="flaticon-money"></i>
+                                    <h4>خدمات ما</h4>
+                                    <p>خدمات ما شامل حمایت مالی , خدمات مشاوره , پخش مواد غذایی به خانواده ها میشود</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- service part end-->
+
+    <!-- about part end-->
+    <section class="about_us">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6">
+                    <div class="about_us_img">
+                        <img src="{{home_pic1.picture.url}}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about_us_text">
+                        <h5>مستقر در مشهد از <br><span>1397</span></h5>
+                        <h2>خانه مهر چه میکند؟</h2>
+                        <p>گروهی از حامیان با پرداخت هزینه های تدریس دانش اموزان , از انها حمایت میکنند</p>
+                        <div class="banner_item">
+                            <div class="single_item">
+                                <h2><span class="count">238 </h2>
+                                <h5>مجموع دانش اموزان</h5>
+                            </div>
+                            <div class="single_item">
+                                <h2><span class="count">694</span></h2>
+                                <h5>پروژه های موفقیت آمیز</h5>
+                            </div>
+                            <div class="single_item">
+                                <h2><span class="count">695</span></h2>
+                                <h5>جمع کل پروژه ها</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="text-center about_btn">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about part end-->
+
+    <!--::passion part start::-->
+    <section class="passion_part passion_section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-md-8">
+                    <div class="section_tittle">
+                        <h2>علت به وجود آمدن ما</h2>
+                        <p>انجمن خانه مهر به عنوان نهادی غیردولتی و غیرانتفاعی، با هدف حمایت از کودکان در معرض آسیب و به ویژه کودکان مستعد آغاز نموده است و به صورت رایگان، خدمات آموزشی و حمایتی خود را ارائه می‏ دهد.
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-4 col-xl-4">
+                    <div class="single-home-passion">
+                        <div class="card">
+                            <img src="{% static 'main/pics/passion/passion_2.png' %}" class="card-img-top" alt="blog">
+                            <div class="card-body">
+                                <a href="#">
+                                    <h5 class="card-title">خرید لوازم التحریر</h5>
+                                </a>
+                                <ul>
+                                    <li><img src="{% static 'main/pics/icon/passion_1.svg' %}" alt=""> هدف: 10میلیون تومان</li>
+                                </ul>
+                                <div class="skill">
+                                    <div class="skill-bar skill11 wow slideInRight animated">
+                                        <span class="skill-count11">80%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::passion part end::-->
+
+    <!-- intro_video_bg start-->
+    <section class="intro_video_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-8">
+                    <div class="intro_video_iner text-center">
+                        <h2>خانه مهر , خانه ای ابدی!</h2>
+                        <h3>دانش اموزان ما راه ما را ادامه میدهند</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- intro_video_bg part start-->
+
+    <!--::event_part start::-->
+    <section class="event_part">
+    </section>
+    <!--::event_part end::-->
+
+    <!--::blog_part start::-->
+    <section class="blog_part padding_bottom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-md-8">
+                    <div class="section_tittle text-center">
+                        <h2>پست بلاگ</h2>
+                        <p>اخبار حوزه دانش اموزان مستعد  و تازه های انجمن را هر روز اینجا ببینید</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    {% for new in news %}
+                    <div class="single_blog">
+                        <div class="appartment_img">
+                            <img src="{{new.picture.url}}" alt="">
+                        </div>
+                        <div class="single_appartment_content">
+                            <a href="{{new.get_exact_url}}">
+                                <h4>{{new.name | truncatechars:45 |safe}}</h4>
+                            </a>
+                            <p>{{new.short_desc | truncatechars:45 |safe}}</p>
+                            <ul class="list-unstyled">
+                                <li><a href=""> <span class="flaticon-calendar"></span> </a>{{new.create_at}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::blog_part end::-->
+
+    <!--::our client part start::-->
+    <section class="client_part padding_bottom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6">
+                    <div class="section_tittle text-center">
+                        <h2>ما بهترین خودمانیم</h2>
+                        <h3>نوشته شده توسط یکی از دانش اموزان خانه مهر</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--::our client part end::-->
+{% endblock content %}
+    <!--::footer_part start::-->
+    <footer class="footer_part">
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single_footer_part">
+                        <img src="{{home_pic4.picture.url}}" class="footer_logo" alt="">
+                        <p>انجمن خانه مهر به عنوان نهادی غیردولتی و غیرانتفاعی، با هدف حمایت از کودکان در معرض آسیب و به ویژه دانش اموزان مستعد آغاز نموده است.</p>
+                        <div class="work_hours">
+                            <h5>ساعات کاری :</h5>
+                            <ul>
+                                <li><p>شنبه تا 5 شنبه</p><span> 9 صبح - 1 بعد از ظهر</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="single_footer_part">
+                        <h4>خبرنامه</h4>
+                        <p>با عضویت در خبرنامه از اخرین اخبار و رویدادهای انجن باخبر شوید</p>
+                        <div id="mc_embed_signup">
+                            <form target="_blank" action="" method="get" class="subscribe_form relative mail_part" required>
+                                <input type="email" name="email" id="newsletter-form-email" placeholder="آدرس ایمیل" class="placeholder hide-on-focus" onfocus="this.placeholder = ''" onblur="this.placeholder = ' آدرس ایمیل '" required="" type="email">
+                                <button type="submit" name="submit" id="newsletter-submit" class="email_icon newsletter-submit button-contactForm"><i class="fa fa-paper-plane"></i></button>
+                                <div class="mt-10 info"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="copyright_text">
+                        <P>
+                            کپی رایت&copy;<script>document.write(new Date().getFullYear());</script>
+                            تمام حقوق محفوظ است | ساخته شده با <i class="ti-heart" aria-hidden="true"></i> توسط
+                            <a href="http://instagram.com/seal_v1z1t0r" target="_blank">V1Z1tor - ویزیتور</a>
+                        </P>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="footer_icon social_icon">
+                        <ul class="list-unstyled">
+                            <li><a href="http://whoisv1z1t0r.pythonanywhere.com" class="single_social_icon"><i class="fa fa-globe"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--::footer_part end::-->
+
+    <!-- jquery plugins here-->
+    <script src="{% static 'main/js/jquery-1.12.1.min.js' %}"></script>
+    <!-- popper js -->
+    <script src="{% static 'main/js/popper.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <!-- easing js -->
+    <script src="{% static 'main/js/jquery.magnific-popup.js' %}"></script>
+    <!-- swiper js -->
+    <script src="{% static 'main/js/jquery.smooth-scroll.min.js' %}"></script>
+    <!-- swiper js -->
+    <!-- particles js -->
+    <script src="{% static 'main/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'main/js/jquery.nice-select.min.js' %}"></script>
+
+    <!-- swiper js -->
+    <script src="{% static 'main/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'main/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'main/js/countdown.jquery.min.js' %}"></script>
+    <script src="{% static 'main/js/timer.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'main/js/custom.js' %}"></script>
+</body>
+</html>
